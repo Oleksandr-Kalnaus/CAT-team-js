@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.querySelector('.submit-comment-form');
     const modalWindow = document.querySelector('.modal-window');
     const modalOverlay = document.querySelector('.modal-overlay');
@@ -48,4 +47,4 @@ document.addEventListener('DOMContentLoaded', () => {
             form.reset();
         }
     });
-});
+
