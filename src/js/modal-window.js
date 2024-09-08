@@ -1,50 +1,56 @@
-    const sendBtn = document.querySelector('.submit-comment-form');
-    const modalWindow = document.querySelector('.modal-window');
-    const modalOverlay = document.querySelector('.modal-overlay');
-    const closeBtn = document.querySelector('.close-modal-btn');
-    const form = document.querySelector('form');
+import iziToast from 'izitoast';  // Переконайтесь, що iziToast підключено
 
-    sendBtn.onclick = function(event) {
-        event.preventDefault();
-        
-        modalWindow.style.display = 'block';
-        modalOverlay.style.display = 'block';
-        
+const SEND_BTN = document.querySelector('.js-footer-form-btn');
+const MODAL_WINDOW = document.querySelector('.modal-window');
+const MODAL_OVERLAY = document.querySelector('.modal-overlay');
+const CLOSE_BTN = document.querySelector('.close-modal-btn');
+const FORM = document.querySelector('.js-footer-form');
+const FORM_INPUTS = FORM.querySelectorAll('input, textarea');
+const EMAIL_INPUT = document.querySelector('#email');  // Отримуємо поле email
+
+SEND_BTN.onclick = function(event) {
+    event.preventDefault();
+
+        MODAL_WINDOW.style.display = 'block';
+        MODAL_OVERLAY.style.display = 'block';
+
         setTimeout(() => {
-            modalWindow.classList.add('show');
-            modalOverlay.classList.add('show');
+            MODAL_WINDOW.classList.add('show');
+            MODAL_OVERLAY.classList.add('show');
         }, 10);
-    }
+    
+}
 
-    closeBtn.onclick = function() {
-        modalWindow.classList.remove('show');
-        modalOverlay.classList.remove('show');
+CLOSE_BTN.onclick = function() {
+    MODAL_WINDOW.classList.remove('show');
+    MODAL_OVERLAY.classList.remove('show');
+
+    setTimeout(() => {
+        MODAL_WINDOW.style.display = 'none';
+        MODAL_OVERLAY.style.display = 'none';
+    }, 1000);
+}
+
+window.onclick = function(event) {
+    if (event.target == MODAL_OVERLAY) {
+        MODAL_WINDOW.classList.remove('show');
+        MODAL_OVERLAY.classList.remove('show');
 
         setTimeout(() => {
-            modalWindow.style.display = 'none';
-            modalOverlay.style.display = 'none';
+            MODAL_WINDOW.style.display = 'none';
+            MODAL_OVERLAY.style.display = 'none';
         }, 1000);
+
+        FORM.reset();
     }
+}
 
-    window.onclick = function(event) {
-        if (event.target == modalOverlay) {
-            modalWindow.classList.remove('show');
-            modalOverlay.classList.remove('show');
+CLOSE_BTN.addEventListener('click', () => {
+    FORM.reset();
+});
 
-            setTimeout(() => {
-                modalWindow.style.display = 'none';
-                modalOverlay.style.display = 'none';
-            }, 1000);
-        }
+window.addEventListener('click', (event) => {
+    if (event.target == MODAL_OVERLAY) {
+        FORM.reset();
     }
-
-    closeBtn.addEventListener('click', () => {
-        form.reset();
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target == modalOverlay) {
-            form.reset();
-        }
-    });
-
+});
