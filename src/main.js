@@ -4,7 +4,7 @@ import './js/about-me';
 import './js/about-me-skills';
 import './js/benefits';
 import './js/projects';
-import './js/faq';
+import './js/FAQ';
 import './js/covers';
 import './js/reviews';
 import './js/footer';
