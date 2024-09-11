@@ -11,4 +11,5 @@
   };
 
   menuBtn.addEventListener('click', toggleMenu);
-})(); 
+  
+})();
